@@ -308,21 +308,21 @@ export class KnowledgeBaseService {
           console.log(prompt,'查看上下文');
           
           // 调用DeepSeek API
-          const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+          const response = await fetch('https://api.deepseek.com/beta/completions', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
             },
             body: JSON.stringify({
-              model: 'deepseek-chat',
+              model: 'deepseek-v4-flash',
               messages: [
                 {
                   role: 'user',
                   content: prompt,
                 },
               ],
-              temperature: 1.3,
+              temperature: 1.0,
               max_tokens: 1000,
             }),
           });
